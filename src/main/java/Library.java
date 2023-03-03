@@ -1,16 +1,15 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class Library extends Book{
+public class Library{
     public Hashtable<Integer, Integer> booksList;
     public Hashtable<String, Integer> booksListWithNames;
-    public ArrayList<String>  usersList ;
-    public ArrayList<String> librariansList;
+    public Hashtable<String, String> usersList ;
+    public Hashtable<String, String> librariansList;
 
-    public Library(String name, String author, int year, int isbn) {
-        super(name, author, year, isbn);
+    public Library(){
+
     }
-
     /*
     * The library should have a list of books.
     * The library should have a map of books ISBNs which is linked to the amount of book
@@ -68,8 +67,8 @@ public class Library extends Book{
 
     //user related functions
 
-    public void addUser(String username){
-        usersList.add(username);
+    public void addUser(String username,String password){
+        usersList.put(username,password);
     }
 
     public void removeUser(String username){
