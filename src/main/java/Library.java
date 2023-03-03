@@ -1,4 +1,16 @@
-public class Library {
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+public class Library extends Book{
+    public Hashtable<Integer, Integer> booksList;
+    public Hashtable<String, Integer> booksListWithNames;
+    public ArrayList<String>  usersList ;
+    public ArrayList<String> librariansList;
+
+    public Library(String name, String author, int year, int isbn) {
+        super(name, author, year, isbn);
+    }
+
     /*
     * The library should have a list of books.
     * The library should have a map of books ISBNs which is linked to the amount of book
@@ -8,46 +20,67 @@ public class Library {
 
     //book related functions
 
-    public void addBook(){
-        //TODO
+    public void addBook (String name,int isbn, int countOfBooks){
+        booksList.put(isbn,countOfBooks);
+        booksListWithNames.put(name,isbn);
     }
 
-    public void removeBook(){
-        //TODO
+    public void removeBook(String bookName){
+        booksList.remove(bookName);
     }
 
-    public void searchBook(){
-        //TODO
+    public void searchBook(String name, int isbn){
+        if(booksList.get(isbn) != 0)
+        {
+            System.out.println("Only " + getCountOfBooks(isbn) + " copies of " + booksListWithNames.get(name) + " has left");
+        }
+        else {
+            System.out.println("This book is out of stock");
+        }
     }
 
     public void updateBook(){
         //TODO
     }
 
-    public void doesBookExist(){
-        //TODO
+    public void doesBookExist(int  isbn){
+        if(booksList.get(isbn) != 0)
+        {
+            System.out.println("Yes");
+        }
+        else {
+            System.out.println("No");
+        }
     }
 
-    public void increaseBook(){
-        //TODO
+    public int getCountOfBooks(int isbn){
+        return booksList.get(isbn);
+    }
+    public void increaseBook(int isbn, int increase){
+        int count = getCountOfBooks(isbn) + increase;
+        booksList.replace(isbn,count);
     }
 
-    public void decreaseBook(){
-        //TODO
+    public void decreaseBook(int isbn, int decrease){
+        int count = getCountOfBooks(isbn) + decrease;
+        booksList.replace(isbn,count);
     }
 
     //user related functions
 
-    public void addUser(){
-        //TODO
+    public void addUser(String username){
+        usersList.add(username);
     }
 
-    public void removeUser(){
-        //TODO
+    public void removeUser(String username){
+        usersList.remove(username);
     }
 
-    public void searchUser(){
-        //TODO
+    public void searchUser(String username ){
+        /*if(usersList.contains(username))
+        {
+            System.out.println("User with username : " + username + "");
+        }*/
     }
 
     public void updateUser(){
@@ -79,6 +112,5 @@ public class Library {
     public void doesLibrarianExist(){
         //TODO
     }
-
 
 }
