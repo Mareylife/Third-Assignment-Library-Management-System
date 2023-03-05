@@ -6,7 +6,7 @@ public class User {
     private String username;
     private String password;
 
-    public ArrayList<String> books;
+    public ArrayList<String> books = new ArrayList<>(10);
 
     public User(String username, String password)
     {

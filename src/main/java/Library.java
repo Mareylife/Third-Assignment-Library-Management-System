@@ -8,6 +8,13 @@ public class Library{
     public Hashtable<String, String> librariansList;
 
     public Library(){
+        booksList = new Hashtable<>(10);
+        booksListWithNames = new Hashtable<>(100);
+        usersList = new Hashtable<>(100);
+        librariansList = new Hashtable<>(10);
+        addBook("harryPotter", 1 , 10);
+        //addbooks
+        //
 
     }
     /*
@@ -28,13 +35,13 @@ public class Library{
         booksList.remove(bookName);
     }
 
-    public void searchBook(String name, int isbn){
+    public boolean searchBook(String name, int isbn){
         if(booksList.get(isbn) != 0)
         {
-            System.out.println("Only " + getCountOfBooks(isbn) + " copies of " + booksListWithNames.get(name) + " has left");
+            return true;
         }
         else {
-            System.out.println("This book is out of stock");
+            return false;
         }
     }
 
@@ -42,13 +49,13 @@ public class Library{
         //TODO
     }
 
-    public void doesBookExist(int  isbn){
+    public boolean doesBookExist(int  isbn){
         if(booksList.get(isbn) != 0)
         {
-            System.out.println("Yes");
+            return true;
         }
         else {
-            System.out.println("No");
+            return false;
         }
     }
 
