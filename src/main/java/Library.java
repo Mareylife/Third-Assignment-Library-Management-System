@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class Library{
+public class Library extends Book{
     public Hashtable<Integer, Integer> booksList;
     public Hashtable<String, Integer> booksListWithNames;
     public Hashtable<String, String> usersList ;
     public Hashtable<String, String> librariansList;
 
     public Library(){
+        super();
         booksList = new Hashtable<>(10);
         booksListWithNames = new Hashtable<>(100);
         usersList = new Hashtable<>(100);
         librariansList = new Hashtable<>(10);
         addBook("harryPotter", 1 , 10);
-        //addbooks
-        //
+        addBook("kimiagar",2,5);
 
     }
     /*
@@ -45,8 +45,8 @@ public class Library{
         }
     }
 
-    public void updateBook(){
-        //TODO
+    public void updateBook(int isbn, String name){
+        setIsbn(isbn);
     }
 
     public boolean doesBookExist(int  isbn){

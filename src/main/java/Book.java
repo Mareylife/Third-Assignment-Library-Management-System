@@ -7,6 +7,7 @@ public class Book {
 
     private boolean borrowed = false;
 
+    public Book(){}
     public Book (String name, String author, int year, int isbn)
     {
         this.name = name;
@@ -27,7 +28,9 @@ public class Book {
     public String getName() {
         return name;
     }
-
+    private void setName(String name){
+        this.name = name;
+    }
     public String getAuthor() {
         return author;
     }
@@ -38,5 +41,8 @@ public class Book {
 
     public int getIsbn() {
         return isbn;
+    }
+    protected void setIsbn(int isbn){
+        this.isbn = isbn;
     }
 }
