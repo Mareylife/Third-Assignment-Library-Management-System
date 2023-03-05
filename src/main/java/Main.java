@@ -18,6 +18,7 @@ public class Main {
         Library library = new Library();
         User user1 = null;
         Librarian librarian  = null;
+
         if(userOrLibrarian.equals("user")){
             user1 = new User(username,password);
             library.usersList.put(username,password);
@@ -25,6 +26,7 @@ public class Main {
         else {
             librarian = new Librarian(username,password);
         }
+
         runMenu(userOrLibrarian,username,password);
 
         if(userOrLibrarian.equals("user"))
@@ -100,16 +102,19 @@ public class Main {
                             }
                         }                    }
                     System.out.println();
-                } else if (number == 6) {
+                }
+                else if (number == 6) {
                     System.out.println("your username is:" + user1.getUsername() + " and your password is:" + user1.getPassword());
 
-                } else if (number == 7) {
+                }
+                else if (number == 7) {
                     System.out.print("enter your new username and password");
                     String usernameNew = input.next();
                     String passwordNew = input.next();
                     library.updateUser(usernameNew,passwordNew);
                     System.out.println("Done!");
-                } else {
+                }
+                else {
                     System.out.println("bye bye! see you later!");
                 }
             }while (number != 8);
@@ -137,13 +142,7 @@ public class Main {
                 {
                     System.out.println("please enter username:");
                     String user = input.next();
-                    if(library.usersList.contains(user))
-                    {
-                        System.out.println("Yes we have this username in the list");
-                    }
-                    else {
-                        System.out.println("No we don't have this user name in the list");
-                    }
+                    library.searchUser(user);
                 }
                 else if (number==2) {
                     System.out.println("please enter the book's name:");
@@ -193,6 +192,7 @@ public class Main {
                     System.out.println("please enter the count of books: ");
                     int  count = input.nextInt();
                     library.addBook(name,isbn,count);
+                    library.booksListWithNames.put(name,isbn);
                 }
                 else if(number == 8){
                     System.out.println("please enter the book's name: ");
@@ -212,7 +212,7 @@ public class Main {
                     System.out.println("please enter username: ");
                     String name = input.next();
                     System.out.println("please enter password: ");
-                    String  pass = input.next();
+                    String pass = input.next();
                     library.addUser(name,pass);
                 }
                 else if (number == 11) {

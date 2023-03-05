@@ -85,10 +85,13 @@ public class Library extends Librarian{
         setPassword(password);
     }
     public void searchUser(String username ){
-        /*if(usersList.contains(username))
+        if(usersList.contains(username))
         {
-            System.out.println("User with username : " + username + "");
-        }*/
+            System.out.println("Yes we have this username in the list");
+        }
+        else {
+            System.out.println("No we don't have this user name in the list");
+        }
     }
     public void doesUserExist(){
         //TODO
