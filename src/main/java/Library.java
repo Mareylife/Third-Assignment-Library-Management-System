@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class Library extends Book{
+public class Library extends Librarian{
     public Hashtable<Integer, Integer> booksList;
     public Hashtable<String, Integer> booksListWithNames;
     public Hashtable<String, String> usersList ;
     public Hashtable<String, String> librariansList;
 
     public Library(){
-        super();
+        super("username","password");
         booksList = new Hashtable<>(10);
         booksListWithNames = new Hashtable<>(100);
         usersList = new Hashtable<>(100);
         librariansList = new Hashtable<>(10);
-        addBook("harryPotter", 1 , 10);
+        addBook("HarryPotter", 1 , 10);
         addBook("kimiagar",2,5);
 
     }
@@ -25,7 +25,6 @@ public class Library extends Book{
      */
 
     //book related functions
-
     public void addBook (String name,int isbn, int countOfBooks){
         booksList.put(isbn,countOfBooks);
         booksListWithNames.put(name,isbn);
@@ -35,6 +34,11 @@ public class Library extends Book{
         booksList.remove(bookName);
     }
 
+    public void updateBook(int isbn, String name, int count){
+        setIsbn(isbn);
+        setName(name);
+        booksList.replace(isbn,count);
+    }
     public boolean searchBook(String name, int isbn){
         if(booksList.get(isbn) != 0)
         {
@@ -43,10 +47,6 @@ public class Library extends Book{
         else {
             return false;
         }
-    }
-
-    public void updateBook(int isbn, String name){
-        setIsbn(isbn);
     }
 
     public boolean doesBookExist(int  isbn){
@@ -73,48 +73,32 @@ public class Library extends Book{
     }
 
     //user related functions
-
-    public void addUser(String username,String password){
+    public void addUser(String username, String password)
+    {
         usersList.put(username,password);
     }
-
     public void removeUser(String username){
         usersList.remove(username);
     }
-
+    public void updateUser(String username, String password){
+        setUsername(username);
+        setPassword(password);
+    }
     public void searchUser(String username ){
         /*if(usersList.contains(username))
         {
             System.out.println("User with username : " + username + "");
         }*/
     }
-
-    public void updateUser(){
-        //TODO
-    }
-
     public void doesUserExist(){
         //TODO
     }
 
     //librarian related functions
 
-    public void addLibrarian(){
-        //TODO
-    }
-
-    public void removeLibrarian(){
-        //TODO
-    }
-
     public void searchLibrarian(){
         //TODO
     }
-
-    public void updateLibrarian(){
-        //TODO
-    }
-
     public void doesLibrarianExist(){
         //TODO
     }

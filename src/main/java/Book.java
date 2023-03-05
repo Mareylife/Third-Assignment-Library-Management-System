@@ -1,4 +1,4 @@
-public class Book {
+public class Book extends User {
     //Book should contain name,author,year of publish and ISBN
     private String name;
     private String author;
@@ -28,7 +28,7 @@ public class Book {
     public String getName() {
         return name;
     }
-    private void setName(String name){
+    protected void setName(String name){
         this.name = name;
     }
     public String getAuthor() {

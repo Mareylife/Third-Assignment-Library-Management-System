@@ -1,18 +1,23 @@
 import java.util.ArrayList;
+import java.util.Hashtable;
 
-public class Librarian {
+public class Librarian extends Book {
     private String username;
     private String password;
-    private ArrayList<String> users;
-    private ArrayList <String> books;
 
-    private ArrayList<String> librarians;
+    private ArrayList<String> librarians = new ArrayList<>(10);
     private boolean searchResultForUser;
 
     private boolean searchResultForLibrarians;
     private boolean searchResultForBook;
 
-    public boolean SearchForUser(String user)
+    public Librarian(String username, String password) {
+        this.username = username;
+        this.password = password;
+        librarians.add(0,username);
+    }
+
+   /* public boolean SearchForUser(String user)
     {
         if(users.contains(user))
         {
@@ -22,7 +27,7 @@ public class Librarian {
             searchResultForUser = false;
         }
         return searchResultForUser;
-    }
+    }*/
     public boolean SearchForBook(String book)
     {
         if(books.contains(book))
@@ -46,26 +51,7 @@ public class Librarian {
         return searchResultForLibrarians;
     }
 
-    public void addBook(String book)
-    {
-        books.add(book);
-    }
-    public void removeBook(String book){
-        books.remove(book);
-    }
-    public void updateBook(String book){
 
-    }
-
-    public void addUser(String user)
-    {
-        users.add(user);
-    }
-    public void removeUser(String user){
-        users.remove(user);
-    }
-    public void updateUser(String user){
-    }
 
     public void addLibrarian(String librarain)
     {
@@ -74,7 +60,9 @@ public class Librarian {
     public void removeLibrarian(String librarian){
         librarians.remove(librarian);
     }
-    public void updateLibrarian(String librarian){
+    public void updateLibrarian(String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
 

@@ -8,6 +8,7 @@ public class User {
 
     public ArrayList<String> books = new ArrayList<>(10);
 
+    public User(){}
     public User(String username, String password)
     {
         this.username = username;
