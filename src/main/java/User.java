@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+
+import java.util.Hashtable;
 
 public class User {
     //User should have a list of books
@@ -6,7 +7,7 @@ public class User {
     private String username;
     private String password;
 
-    public ArrayList<String> books = new ArrayList<>(10);
+    public Hashtable<String, Integer> books = new Hashtable<>(5);
 
     public User(){}
     public User(String username, String password)
@@ -14,8 +15,8 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    public void rentBook(String book){
-        books.add(book);
+    public void rentBook(String book, int isbn){
+        books.put(book,isbn);
     }
     public void returnBook(String book){
         books.remove(book);
@@ -36,4 +37,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Library extends Librarian{
@@ -34,10 +33,8 @@ public class Library extends Librarian{
         booksList.remove(bookName);
     }
 
-    public void updateBook(int isbn, String name, int count){
-        setIsbn(isbn);
-        setName(name);
-        booksList.replace(isbn,count);
+    public void updateBook(int isbn, int count){
+        booksList.replace(isbn,getCountOfBooks(isbn) + count);
     }
     public boolean searchBook(String name, int isbn){
         if(booksList.get(isbn) != 0)
@@ -49,15 +46,6 @@ public class Library extends Librarian{
         }
     }
 
-    public boolean doesBookExist(int  isbn){
-        if(booksList.get(isbn) != 0)
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 
     public int getCountOfBooks(int isbn){
         return booksList.get(isbn);
@@ -68,7 +56,7 @@ public class Library extends Librarian{
     }
 
     public void decreaseBook(int isbn, int decrease){
-        int count = getCountOfBooks(isbn) + decrease;
+        int count = getCountOfBooks(isbn) - decrease;
         booksList.replace(isbn,count);
     }
 
@@ -80,12 +68,12 @@ public class Library extends Librarian{
     public void removeUser(String username){
         usersList.remove(username);
     }
-    public void updateUser(String username, String password){
-        setUsername(username);
-        setPassword(password);
+    public void updateUser(User user,String username, String password){
+        user.setUsername(username);
+        user.setPassword(password);
     }
     public void searchUser(String username ){
-        if(usersList.contains(username))
+        if(usersList.containsKey(username))
         {
             System.out.println("Yes we have this username in the list");
         }
@@ -93,17 +81,9 @@ public class Library extends Librarian{
             System.out.println("No we don't have this user name in the list");
         }
     }
-    public void doesUserExist(){
-        //TODO
-    }
 
-    //librarian related functions
-
-    public void searchLibrarian(){
-        //TODO
+    public void printBookList(){
+        System.out.println( " names: " + booksListWithNames.keySet());
+        System.out.println(" with count of : " + booksList.values());
     }
-    public void doesLibrarianExist(){
-        //TODO
-    }
-
 }

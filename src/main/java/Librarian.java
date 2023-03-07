@@ -5,8 +5,7 @@ public class Librarian extends Book {
     private String username;
     private String password;
 
-    private ArrayList<String> librarians = new ArrayList<>(10);
-    private boolean searchResultForUser;
+    public Hashtable<String,String> librarians = new Hashtable<>(10);
 
     private boolean searchResultForLibrarians;
     private boolean searchResultForBook;
@@ -14,34 +13,12 @@ public class Librarian extends Book {
     public Librarian(String username, String password) {
         this.username = username;
         this.password = password;
-        librarians.add(0,username);
+        librarians.put(username,password);
     }
 
-   /* public boolean SearchForUser(String user)
-    {
-        if(users.contains(user))
-        {
-            searchResultForUser = true;
-        }
-        else {
-            searchResultForUser = false;
-        }
-        return searchResultForUser;
-    }*/
-    public boolean SearchForBook(String book)
-    {
-        if(books.contains(book))
-        {
-            searchResultForBook = true;
-        }
-        else {
-            searchResultForBook = false;
-        }
-        return searchResultForBook;
-    }
     public boolean SearchForLibrarian(String librarian)
     {
-        if(librarians.contains(librarian))
+        if(librarians.containsKey(librarian))
         {
             searchResultForLibrarians = true;
         }
@@ -53,18 +30,15 @@ public class Librarian extends Book {
 
 
 
-    public void addLibrarian(String librarain)
+    public void addLibrarian(String username, String password)
     {
-        librarians.add(librarain);
+        librarians.put(username,password);
     }
     public void removeLibrarian(String librarian){
         librarians.remove(librarian);
     }
-    public void updateLibrarian(String username, String password){
-        this.username = username;
-        this.password = password;
+    public void updateLibrarian(String password){
+        librarians.replace(username,password);
     }
-
-
 
 }
