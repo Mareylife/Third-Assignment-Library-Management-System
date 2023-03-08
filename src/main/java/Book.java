@@ -20,9 +20,6 @@ public class Book{
         return borrowed;
     }
 
-    public void setBorrowed(boolean borrowed) {
-        this.borrowed = borrowed;
-    }
 
     public String getName() {
         return name;
