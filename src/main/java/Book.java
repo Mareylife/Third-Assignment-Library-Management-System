@@ -1,4 +1,4 @@
-public class Book extends User {
+public class Book{
     //Book should contain name,author,year of publish and ISBN
     private String name;
     private String author;
@@ -7,7 +7,6 @@ public class Book extends User {
 
     private boolean borrowed = false;
 
-    public Book(){}
     public Book (String name, String author, int year, int isbn)
     {
         this.name = name;
